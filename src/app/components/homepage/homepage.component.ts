@@ -36,7 +36,7 @@ export class HomepageComponent implements OnInit {
                                           this.sort, APIType.stackoverflow);
     this.$nameFilter.asObservable()
       .pipe(
-        debounceTime(400),
+        debounceTime(800),
         filter( name => name && name !== undefined && name !== ' ')
       ).subscribe( name => {
         const temp = this.dataSource.filters;
