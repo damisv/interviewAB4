@@ -1,6 +1,7 @@
 # InterviewAb4
 
 An Angular 6 app for showing/searching users on StackExchange api's.Currently StackOverflow.
+! - It uses the unauthenticated version of the api, so the requests/min rate limit is low.
 
 ## <a href="https://github.com/damisv/interviewAB4/tree/master/">Master branch</a>
 
