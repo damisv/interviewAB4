@@ -6,6 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent, DetailsComponent, HomepageComponent} from './components';
 import {FormsModule} from '@angular/forms';
 import {AppRoutingModule, MaterialModule} from './modules';
+import {ThemeService} from './services';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import {AppRoutingModule, MaterialModule} from './modules';
     FormsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

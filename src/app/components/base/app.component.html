@@ -1,1 +1,38 @@
-<router-outlet></router-outlet>
+<div ngClass="{{theme}}">
+  <div id="content">
+    <mat-toolbar color="primary" style="transition: all 1.5s ease;position: sticky;top:0" [ngClass]="{'transparentToolbar': isTop}">
+      <p style="font-weight: bold;">Test project</p>
+      <span class="spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Select a theme!" tabindex="-1">
+        <mat-icon>format_color_fill</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <ng-template ngFor let-theme [ngForOf]="themes">
+          <button mat-menu-item (click)="changeTheme(theme.value)">{{ theme.title }}</button>
+        </ng-template>
+      </mat-menu>
+    </mat-toolbar>
+    <div>
+      <div id="wallpaper" class="header">
+        <br><br>
+        <p class="title">Test Project</p>
+      </div>
+
+      <div class="main main-raised" [ngClass]="{'main-dark': isDark, 'main-light': !isDark}">
+        <router-outlet></router-outlet>
+      </div>
+
+      <footer>
+        <mat-toolbar>
+          <mat-toolbar-row>
+            <a mat-icon-button><i class="fab fa-github"></i><span class="description">Visit our repo</span></a>
+            <div class="spacer"></div>
+            <p class="description">Copyright &copy; 2018 by  Anchidin Damian</p>
+          </mat-toolbar-row>
+        </mat-toolbar>
+      </footer>
+
+    </div>
+
+  </div>
+</div>
