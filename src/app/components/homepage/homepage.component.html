@@ -1,1 +1,67 @@
-<h1>Homepage</h1>
+<div class="container">
+
+  <div class="loader" *ngIf="dataSource.loadingResult || dataSource.rateLimitReached">
+    <mat-spinner *ngIf="dataSource.loadingResult"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="dataSource.rateLimitReached">
+      Rate Limit reached !! Please wait 30 seconds or more, and try again.
+    </div>
+  </div>
+
+  <mat-form-field>
+    <input matInput (keyup)="$nameFilter.next($event.target.value)" placeholder="Name Filter" style="width: 90%">
+  </mat-form-field>
+
+  <div class="table-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource"
+           matSort matSortActive="reputation" matSortDirection="desc" matSortDisableClear>
+
+      <!-- Profile Image Column -->
+      <ng-container matColumnDef="profile">
+        <th mat-header-cell *matHeaderCellDef> Profile Image </th>
+        <td mat-cell *matCellDef="let user"><img style="height: 64px;width: 64px;" src="{{user.profile_image}}" ></td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Name </th>
+        <td mat-cell *matCellDef="let user"> {{user.display_name}} </td>
+      </ng-container>
+
+      <!-- Reputation Column -->
+      <ng-container matColumnDef="reputation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Reputation </th>
+        <td mat-cell *matCellDef="let user"> {{user.reputation}} </td>
+      </ng-container>
+
+      <!-- Location Column -->
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef> Location </th>
+        <td mat-cell *matCellDef="let user"> {{user.location}} </td>
+      </ng-container>
+
+      <!-- Gold Badges Column -->
+      <ng-container matColumnDef="goldBadges">
+        <th mat-header-cell *matHeaderCellDef> Gold Badges </th>
+        <td mat-cell *matCellDef="let user"> {{user.badge_counts.gold}} </td>
+      </ng-container>
+
+      <!-- Silver Badges Column -->
+      <ng-container matColumnDef="silverBadges">
+        <th mat-header-cell *matHeaderCellDef> Silver Badges </th>
+        <td mat-cell *matCellDef="let user"> {{user.badge_counts.silver}} </td>
+      </ng-container>
+
+      <!-- Bronze Badges Column -->
+      <ng-container matColumnDef="bronzeBadges">
+        <th mat-header-cell *matHeaderCellDef> Bronze Badges </th>
+        <td mat-cell *matCellDef="let user"> {{user.badge_counts.bronze}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let user; columns: displayedColumns;" (click)="showUser(user.user_id)"></tr>
+    </table>
+  </div>
+
+  <mat-paginator [pageSize]="30" [pageSizeOptions]="[5, 30, 100]"></mat-paginator>
+
+</div>

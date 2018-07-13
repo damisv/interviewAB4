@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent, DetailsComponent, HomepageComponent} from './components';
 import {FormsModule} from '@angular/forms';
 import {AppRoutingModule, MaterialModule} from './modules';
-import {ThemeService} from './services';
+import {StackExchangeService, ThemeService} from './services';
 
 
 @NgModule({
@@ -23,7 +23,7 @@ import {ThemeService} from './services';
     FormsModule,
     MaterialModule
   ],
-  providers: [ThemeService],
+  providers: [ThemeService, StackExchangeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

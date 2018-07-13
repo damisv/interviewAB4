@@ -1,1 +1,91 @@
-<h1>Details</h1>
+<div class="card-container">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image" [ngStyle]="{'background-image':  'url('+(user !== undefined ? user.profile_image : defaultAvatar)+')' }"></div>
+      <mat-card-title>{{ user?.display_name }}</mat-card-title>
+      <mat-card-subtitle> Reputation: {{ user?.reputation }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-accordion class="headers-align">
+        <mat-expansion-panel [expanded]="currentStep === 0" (opened)="setStep(0)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Account Data</mat-panel-title>
+            <mat-panel-description> ID, User ID etc.<mat-icon>account_circle</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="flex-container">
+            <mat-form-field>
+              <input matInput disabled placeholder="Account ID" [ngModel]="user?.account_id">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput disabled placeholder="User ID" [ngModel]="user?.user_id">
+            </mat-form-field>
+          </div>
+
+          <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="currentStep === 1" (opened)="setStep(1)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Residence & Links</mat-panel-title>
+            <mat-panel-description>Location<mat-icon>map</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="flex-container">
+            <mat-form-field>
+              <input matInput disabled placeholder="Location" [ngModel]="user?.location">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput disabled placeholder="Website URL" [ngModel]="user?.website_url">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput disabled placeholder="Link" [ngModel]="user?.link">
+            </mat-form-field>
+          </div>
+
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="currentStep === 2" (opened)="setStep(2)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Badges</mat-panel-title>
+            <mat-panel-description>Badges Count<mat-icon>grade</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="flex-container">
+            <mat-form-field>
+              <input matInput disabled placeholder="Gold" [ngModel]="user?.badge_counts.gold">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput disabled placeholder="Silver" [ngModel]="user?.badge_counts.silver">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput disabled placeholder="Bronze" [ngModel]="user?.badge_counts.bronze">
+            </mat-form-field>
+          </div>
+
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">End</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </mat-card-content>
+  </mat-card>
+</div>
+
