@@ -37,7 +37,7 @@ export class MyDataSource<T> extends DataSource<T> {
   }
 
   connect(): Observable<T[]> {
-    const eventEmitters = [this.sort.sortChange, this._paginator.page];
+    const eventEmitters = [this.sort.sortChange, this._paginator.page, this._filtersChanged];
     return merge(...eventEmitters)
           .pipe(
             startWith({}),
