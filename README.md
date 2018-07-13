@@ -1,2 +1,3 @@
-# interviewAB4
-Mini Angular 6 project, for searching stackoverflow users.
+# InterviewAb4
+
+An Angular 6 app for showing/searching users on Stackoverflow.
