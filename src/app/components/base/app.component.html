@@ -1,5 +1,5 @@
 <div ngClass="{{theme}}">
-  <div id="content">
+  <div id="content" style="transition: all 1.5s ease;">
     <mat-toolbar color="primary" style="transition: all 1.5s ease;position: sticky;top:0" [ngClass]="{'transparentToolbar': isTop}">
       <p style="font-weight: bold;">Test project</p>
       <span class="spacer"></span>
@@ -18,12 +18,12 @@
         <p class="title">Test Project</p>
       </div>
 
-      <div class="main main-raised" [ngClass]="{'main-dark': isDark, 'main-light': !isDark}">
+      <div class="main main-raised" [ngClass]="{'main-dark': isDark, 'main-light': !isDark}" style="transition: all 1.5s ease;">
         <router-outlet></router-outlet>
       </div>
 
       <footer>
-        <mat-toolbar>
+        <mat-toolbar style="transition: all 1.5s ease;">
           <mat-toolbar-row>
             <a mat-icon-button><i class="fab fa-github"></i><span class="description">Visit our repo</span></a>
             <div class="spacer"></div>
