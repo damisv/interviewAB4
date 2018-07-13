@@ -38,7 +38,11 @@ export class HomepageComponent implements OnInit {
       .pipe(
         debounceTime(400),
         filter( name => name && name !== undefined && name !== ' ')
-      ).subscribe( name => this.dataSource.filters.setValuesOf(['name'], [name]));
+      ).subscribe( name => {
+        const temp = this.dataSource.filters;
+        temp.setValuesOf(['inname'], [name]);
+        this.dataSource.filters = temp;
+    });
   }
 
   // MARK: Public methods
